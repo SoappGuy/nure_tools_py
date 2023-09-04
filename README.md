@@ -1,6 +1,6 @@
 # `nurejs/api`
 
-> **Warning**
+> *Warning*
 > the library is still under development. i will be happy to receive any feedback, and feel free to improve my code
 
 Simple pyton library for nure-dev API
@@ -129,51 +129,44 @@ pprint(teachers)
 
 ```python
 import nure_tools
+from pprint import pprint
 
-```
+schedule = nure_tools.get_schedule('group',
+                                       nure_tools.get_group_id("пзпі-23-2"),
+                                       "2023-09-13",
+                                       "2023-09-14"
+                                       )
 
-**Input:**
 
-```ts
-{
-  groupName: string,
-  startTime: number,
-  endTime: number,
-}
+pprint(schedule)
+
 ```
 
 **Output:**
 
 ```ts
-{
-  id: number;
-  startTime: number;
-  endTime: number;
-  auditorium: string;
-  numberPair: number;
-  type: string;
-  updatedAt: Date;
-  groups: {
-    id: number;
-    name: string;
-  }[];
-  teachers: {
-    id: number;
-    fullName: string;
-    shortName: string;
-  }[];
-  subject: {
-    id: number;
-    brief: string;
-    title: string;
-  };
-}[]
+[{'auditory': '424',
+  'end_time': '1694592300',
+  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
+  'id': '20596',
+  'number_pair': 2,
+  'start_time': '1694586600',
+  'subject': {'brief': 'Фіз', 'id': '1021372', 'title': 'Фізика'},
+  'teachers': [{'full_name': 'Стороженко Володимир Олександрович',
+                'id': '584',
+                'short_name': 'Стороженко В. О.'}],
+  'type': 'Лк',
+  'updatedAt': '2023-09-04T23:35:05.222Z'},
+ {'auditory': '103і',
+  'end_time': '1694586000',
+  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
+  'id': '20595',
+  'number_pair': 1,
+  'start_time': '1694580300',
+  'subject': {'brief': 'ВМ', 'id': '1021413', 'title': 'Вища математика'},
+  'teachers': [{'full_name': 'Литвин Олександра Григорівна',
+                'id': '950',
+                'short_name': 'Литвин О. Г.'}],
+  'type': 'Лк',
+  'updatedAt': '2023-09-04T23:35:05.218Z'}]
 ```
-
-## Stay in touch
-
-- Author - [Kyrylo Savieliev](https://github.com/OneLiL05)
-
-## Licence
-
-Nurekit is [GNU GPLv3.0 licenced](https://github.com/OneLiL05/nurekit/blob/main/LICENSE)
