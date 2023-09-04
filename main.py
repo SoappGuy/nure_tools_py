@@ -8,3 +8,4 @@ if __name__ == '__main__':
 
     for lesson in schedule:
         print(lesson["subject"])
+
