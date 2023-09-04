@@ -8,20 +8,12 @@ Simple pyton library for nure-dev API
 ## Installation
 
 ```shell
-git clone https://github.com/SoappGuy/nure_tools.git &&
-cd nure_git &&
-python -m pip install -e .
+git clone https://github.com/SoappGuy/nure_tools.git && cd nure_git && python -m pip install -e .
 ```
 
-## Usage
-
-```python
-import nure_tools
-import pprint
-
-pprint.pprint(nure_tools.get_groups())
+## Examples
 # for more examples see https://github.com/examples.py
-```
+
 
 ## Functions
 
