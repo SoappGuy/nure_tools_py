@@ -11,8 +11,8 @@ Simple pyton library for nure-dev API
 git clone https://github.com/SoappGuy/nure_tools.git && cd nure_git && python -m pip install -e .
 ```
 
-## Examples
-# for more examples see https://github.com/SoappGuy/nure_tools/examples.py
+# Examples
+## for more examples see https://github.com/SoappGuy/nure_tools/blob/master/examples.py
 
 
 ## Functions
