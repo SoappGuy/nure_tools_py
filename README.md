@@ -1,4 +1,4 @@
-# `nurejs/api`
+# `nure_tools python library`
 
 > *Warning*
 > the library is still under development. i will be happy to receive any feedback, and feel free to improve my code
