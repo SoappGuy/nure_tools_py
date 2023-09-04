@@ -8,7 +8,7 @@ Simple pyton library for nure-dev API
 ## Installation
 
 ```shell
-git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_git && python -m pip install -e .
+git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_tools && python -m pip install -e .
 ```
 
 # Examples
