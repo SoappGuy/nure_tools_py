@@ -8,7 +8,7 @@ Simple pyton library for nure-dev API
 ## Installation
 
 ```shell
-git clone https://github.com/SoappGuy/nure_tools.git && cd nure_git && python -m pip install -e .
+git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_git && python -m pip install -e .
 ```
 
 # Examples
@@ -25,7 +25,7 @@ git clone https://github.com/SoappGuy/nure_tools.git && cd nure_git && python -m
 
 ```python
 import nure_tools
-import pprint
+from pprint import pprint
 
 auditories = nure_tools.get_auditories()
 pprint(auditories)    
@@ -53,7 +53,7 @@ pprint(auditories)
 
 ```python
 import nure_tools
-import pprint
+from pprint import pprint
 
 groups = nure_tools.get_groups()
 pprint(groups)
@@ -94,7 +94,7 @@ print(nure_tools.get_group_id("пзпі-23-2"))
 
 ```python
 import nure_tools
-import pprint
+from pprint import pprint
 
 teachers = nure_tools.get_teachers()
 pprint(teachers)
