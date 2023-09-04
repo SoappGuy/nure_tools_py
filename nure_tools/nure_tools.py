@@ -2,7 +2,6 @@ import requests
 import time
 
 
-
 def convert_time(time_toconvert):
     if type(time_toconvert) is int:
         try:
@@ -10,7 +9,6 @@ def convert_time(time_toconvert):
             return time_toconvert
         except ValueError:
             raise ValueError(f"Invalid timestamp was given: {time_toconvert}")
-
     elif type(time_toconvert) is str:
         try:
             timestamp = int(time.mktime(time.strptime(time_toconvert, "%Y-%m-%d")))
@@ -48,12 +46,12 @@ def get_auditories():
         return f'Error: {auditories.status_code}'
 
 
-def get_schedule(type, id, start_time, end_time):
+def get_schedule(request_type, request_id, start_time, end_time):
     start_time = convert_time(start_time)
     end_time = convert_time(end_time)
 
     schedule = requests.get(
-        f'https://nure-dev.pp.ua/api/schedule?type={type}&id={id}&start_time={start_time}&end_time={end_time}')
+        f'https://nure-dev.pp.ua/api/schedule?type={request_type}&id={request_id}&start_time={start_time}&end_time={end_time}')
 
     if schedule.status_code == 200:
         return schedule.json()
@@ -64,6 +62,7 @@ def get_schedule(type, id, start_time, end_time):
 def get_group_id(group_name):
     groups = get_groups()
     for group in groups:
-        if group["name"] == group_name.upper(): return group["id"]
+        if group["name"] == group_name.upper():
+            return group["id"]
     raise ValueError(f"Couldn\'t find group {group_name}")
 
