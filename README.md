@@ -4,7 +4,7 @@
 > The library is still under development. I will be happy to receive any feedback, and you can feel free to improve my code
 
 Simple pyton library for nure-dev API
-
+(Python 3.10+)
 ## Installation
 
 ```shell
