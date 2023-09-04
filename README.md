@@ -124,10 +124,10 @@ import nure_tools
 from pprint import pprint
 
 schedule = nure_tools.get_schedule('group',
-                                       nure_tools.get_group_id("пзпі-23-2"),
-                                       "2023-09-13",
-                                       "2023-09-14"
-                                       )
+                                    nure_tools.get_group_id("пзпі-23-2"),
+                                    "2023-09-13",
+                                    "2023-09-14"
+                                    )
 
 
 pprint(schedule)
