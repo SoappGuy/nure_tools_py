@@ -132,6 +132,7 @@ schedule = nure_tools.get_schedule('group',
 
 pprint(schedule)
 
+
 ```
 
 **Output:**
