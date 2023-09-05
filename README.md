@@ -15,7 +15,7 @@
 
 > (Python 3.10+)
  
-### using bash (for linux)
+### using bash/zsh/fish/etc (for linux)
 
 > **Warning**
 > If you using arch-based distro you may need to set venv first and use pip from that place.
