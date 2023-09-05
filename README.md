@@ -5,8 +5,6 @@
 
 > Simple pyton library for nure-dev API
 
-> (Python 3.10+)
-
 > You can also check out [NodeJS library](https://github.com/OneLiL05/nurekit) made by OneLil05
 
 > And don't forget to star [nure-cist-api](https://github.com/nure-dev/nure-cist-api)
@@ -15,6 +13,8 @@
 
 # Installation
 
+> (Python 3.10+)
+ 
 ### for linux
 ```shell
 git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_tools && python -m pip install -e .
