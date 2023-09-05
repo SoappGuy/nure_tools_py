@@ -18,14 +18,14 @@ git clone https://github.com/SoappGuy/nure_tools.git ; cd ./nure_tools ; python 
 ```
 
 # Examples
-## for more examples see [examples.py file](https://github.com/SoappGuy/nure_tools/blob/master/examples.py)
+> for more examples see [examples.py file](https://github.com/SoappGuy/nure_tools/blob/master/examples.py)
 
 
 # Functions
 
 ### Get auditoriums
 
-[Reference](https://nure-dev.pp.ua/#%D0%B7%D0%B0%D0%BF%D0%B8%D1%82-%D0%BD%D0%B0-%D0%B0%D1%83%D0%B4%D0%B8%D1%82%D0%BE%D1%80%D1%96%D1%97)
+> [Reference](https://nure-dev.pp.ua/#%D0%B7%D0%B0%D0%BF%D0%B8%D1%82-%D0%BD%D0%B0-%D0%B0%D1%83%D0%B4%D0%B8%D1%82%D0%BE%D1%80%D1%96%D1%97)
 
 **Example:**
 
