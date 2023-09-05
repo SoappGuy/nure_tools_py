@@ -12,7 +12,7 @@ git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_tools && pytho
 ```
 
 # Examples
-## for more examples see https://github.com/SoappGuy/nure_tools/blob/master/examples.py
+## for more examples see [examples.py file] (https://github.com/SoappGuy/nure_tools/blob/master/examples.py)
 
 
 ## Functions
@@ -163,3 +163,8 @@ pprint(schedule)
   'type': 'Лк',
   'updatedAt': '2023-09-04T23:35:05.218Z'}]
 ```
+
+
+## Licence
+
+nure_tools is [GNU GPLv3.0 licenced](https://github.com/SoappGuy/nure_tools/blob/master/LICENSE)
