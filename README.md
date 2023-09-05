@@ -16,10 +16,12 @@
 > (Python 3.10+)
  
 ### using bash (for linux)
-```shell
-# If you using arch-based distro you may need to set venv first and use pip from that place.
-# PyCharm will make it automatically, just type following command in PyCharm terminal.
 
+> **Warning**
+> If you using arch-based distro you may need to set venv first and use pip from that place.
+> PyCharm will make it automatically, just type following command in PyCharm terminal.
+
+```shell
 git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_tools && python -m pip install -e .
 
 ```
