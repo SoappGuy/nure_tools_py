@@ -3,8 +3,11 @@
 > **Warning**
 > The library is still under development. I will be happy to receive any feedback, and you can feel free to improve my code
 
-Simple pyton library for nure-dev API
-(Python 3.10+)
+> Simple pyton library for nure-dev API
+> (Python 3.10+)
+
+****************************************************************
+
 ## Installation
 
 ### for linux
@@ -16,6 +19,7 @@ git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_tools && pytho
 ```shell
 git clone https://github.com/SoappGuy/nure_tools.git ; cd ./nure_tools ; python -m pip install -e .
 ```
+****************************************************************
 
 # Examples
 > for more examples see [examples.py file](https://github.com/SoappGuy/nure_tools/blob/master/examples.py)
