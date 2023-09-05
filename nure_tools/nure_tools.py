@@ -59,10 +59,29 @@ def get_schedule(request_type, request_id, start_time, end_time):
         return f'Error: {schedule.status_code}'
 
 
-def get_group_id(group_name):
+def find_group(group_name):
     groups = get_groups()
     for group in groups:
         if group["name"] == group_name.upper():
-            return group["id"]
-    raise ValueError(f"Couldn\'t find group {group_name}")
+            return group
+    raise ValueError(f"Couldn\'t find group \"{group_name}\"")
 
+def find_teacher(teacher_name):
+
+    teacher_name = teacher_name.lower()
+    teachers = get_teachers()
+
+    result = []
+    for teacher in teachers:
+        if teacher_name[-1] == '.':
+            if teacher["short_name"].lower() == teacher_name:
+                result.append(teacher)
+                return result
+        else:
+            if teacher_name in teacher["short_name"].lower():
+                result.append(teacher)
+
+    if len(result) != 0:
+        return result
+
+    raise ValueError(f"Couldn\'t find teacher \"{teacher_name}\", make shour that you wrote name correctly (for example \"Саманцов О. О.\" or \"Саманцов\")")

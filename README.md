@@ -21,7 +21,7 @@ git clone https://github.com/SoappGuy/nure_tools.git ; cd ./nure_tools ; python 
 ## for more examples see [examples.py file](https://github.com/SoappGuy/nure_tools/blob/master/examples.py)
 
 
-## Functions
+# Functions
 
 ### Get auditoriums
 
@@ -76,20 +76,20 @@ pprint(groups)
  {'id': '11106524', 'name': 'ЕЕКі-23-1'}]
 ```
 
-### Get a group
+### Find a group
 
 **Example:**
 
 ```python
 import nure_tools
 
-print(nure_tools.get_group_id("пзпі-23-2"))
+print(nure_tools.find_group("пзпі-23-2"))
 ```
 
 **Output:**
 
 ```ts
-'10887378'
+{'id': '10887378', 'name': 'ПЗПІ-23-2'}
 ```
 
 ### Get teachers
@@ -116,6 +116,27 @@ pprint(teachers)
  ...
  {'full_name': 'Бабкова Н І', 'id': '7605119', 'short_name': 'Бабкова Н. І.'},
  {'full_name': 'Карпенко К І', 'id': '8769045', 'short_name': 'Карпенко К. І.'}]
+```
+### Find a teacher
+
+**Example:**
+
+```python
+import nure_tools
+from pprint import pprint
+
+pprint(nure_tools.find_teacher("Новіков"))
+```
+
+**Output:**
+
+```ts
+[{'full_name': 'Новіков Олексій Валентинович',
+  'id': '7278549',
+  'short_name': 'Новіков О. В.'},
+ {'full_name': 'Новіков Юрій Сергійович',
+  'id': '2145721',
+  'short_name': 'Новіков Ю. С.'}]
 ```
 
 

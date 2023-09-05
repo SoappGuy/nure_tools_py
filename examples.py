@@ -63,6 +63,8 @@ def show_teachers():
 
 if __name__ == '__main__':
 
+    print(nure_tools.find_group('пзпі-23-2'))
+    pprint(nure_tools.find_teacher('Новіков'))
     match(int(input('1 - schedule\n' +
                     '2 - groups\n' +
                     '3 - auditories\n' +
