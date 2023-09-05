@@ -7,9 +7,24 @@ Simple pyton library for nure-dev API
 (Python 3.10+)
 ## Installation
 
+### for linux
 ```shell
 git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_tools && python -m pip install -e .
 ```
+
+### for windows
+```shell
+git clone https://github.com/SoappGuy/nure_tools.git ; cd ./nure_tools ; python -m pip install -e .
+```
+
+## Contributing
+### You have done some changes here?
+### simply run this in project folder and create pull request
+
+```shell
+python setup.py sdist
+```
+
 
 # Examples
 ## for more examples see [examples.py file](https://github.com/SoappGuy/nure_tools/blob/master/examples.py)
