@@ -12,7 +12,7 @@ git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_tools && pytho
 ```
 
 # Examples
-## for more examples see [examples.py file] (https://github.com/SoappGuy/nure_tools/blob/master/examples.py)
+## for more examples see [examples.py file](https://github.com/SoappGuy/nure_tools/blob/master/examples.py)
 
 
 ## Functions
