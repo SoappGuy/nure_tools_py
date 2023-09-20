@@ -18,7 +18,7 @@
 ### using bash/zsh/fish/etc (for linux)
 
 > **Warning**
-> If you are using arch-based distro you may need to set venv first and use pip from that place.
+> If you using arch-based distro you may need to set venv first and use pip from that place.
 > PyCharm will make it automatically, just type following command in PyCharm terminal.
 
 ```shell
@@ -174,18 +174,14 @@ pprint(nure_tools.find_teacher("Новіков"))
 import nure_tools
 from pprint import pprint
 
-schedule_by_group = nure_tools.get_schedule('group',
-                                            nure_tools.find_group("пзпі-23-2")["id"],
-                                            "2023-09-13",
-                                            "2023-09-14"
-                                            )
+schedule = nure_tools.get_schedule('group',
+                                    nure_tools.get_group_id("пзпі-23-2"),
+                                    "2023-09-13",
+                                    "2023-09-14"
+                                    )
 
-schedule_by_teacher = nure_tools.get_schedule('teacher',
-                                              nure_tools.find_teacher("Саманцов")[0]["id"],
-                                              "2023-09-22",
-                                              "2023-09-23"
-                                            )
-pprint(schedule_by_group)
+
+pprint(schedule)
 
 
 ```
