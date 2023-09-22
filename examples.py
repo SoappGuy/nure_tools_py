@@ -13,7 +13,7 @@ def show_schedule():
     second_date = input('Enter second date (like 2023-09-10): ')
 
     schedule = nure_tools.get_schedule('group',
-                                       nure_tools.get_group_id(group),
+                                       nure_tools.find_group(group)["id"],
                                        first_date,
                                        second_date
                                        )
@@ -29,8 +29,9 @@ def show_schedule():
         end_time = time.strftime("%m.%d/%H:%M", end_time)
 
         start_time = start_time.split('/')
+        end_time = end_time.split('/')
 
-        lessons.append(f"{start_time[0]} - {lesson['subject']['title']}: {start_time[1]} - {end_time}")
+        lessons.append(f"{start_time[0]} - {lesson['subject']['title']}: {start_time[1]} - {end_time[1]}")
     return lessons
 
 
@@ -63,8 +64,9 @@ def show_teachers():
 
 if __name__ == '__main__':
 
-    print(nure_tools.find_group('пзпі-23-2'))
-    pprint(nure_tools.find_teacher('Новіков'))
+    # print(nure_tools.find_group('пзпі-23-2'))
+    # pprint(nure_tools.find_teacher('Стороженко'))
+
     match(int(input('1 - schedule\n' +
                     '2 - groups\n' +
                     '3 - auditories\n' +

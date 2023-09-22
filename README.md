@@ -175,44 +175,94 @@ import nure_tools
 from pprint import pprint
 
 schedule = nure_tools.get_schedule('group',
-                                    nure_tools.get_group_id("пзпі-23-2"),
-                                    "2023-09-13",
-                                    "2023-09-14"
+                                    nure_tools.find_group("пзпі-23-2")["id"],
+                                    "2023-09-25",
+                                    "2023-09-26"
                                     )
 
 
 pprint(schedule)
-
 
 ```
 
 **Output:**
 
 ```ts
-[{'auditory': '424',
-  'end_time': '1694592300',
+[{'auditory': 'спорт',
+  'end_time': '1695642300',
   'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
-  'id': '20596',
-  'number_pair': 2,
-  'start_time': '1694586600',
-  'subject': {'brief': 'Фіз', 'id': '1021372', 'title': 'Фізика'},
-  'teachers': [{'full_name': 'Стороженко Володимир Олександрович',
-                'id': '584',
-                'short_name': 'Стороженко В. О.'}],
-  'type': 'Лк',
-  'updatedAt': '2023-09-04T23:35:05.222Z'},
- {'auditory': '103і',
-  'end_time': '1694586000',
+  'id': '64031',
+  'number_pair': 4,
+  'start_time': '1695636600',
+  'subject': {'brief': 'ФВ',
+              'id': '8051836',
+              'title': 'Фізичне виховання (за рахунок вільного часу '
+                       'студентів)'},
+  'teachers': [],
+  'type': 'Пз',
+  'updatedAt': '2023-09-22T17:10:31.354Z'},
+ {'auditory': '324і',
+  'end_time': '1695635400',
   'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
-  'id': '20595',
-  'number_pair': 1,
-  'start_time': '1694580300',
-  'subject': {'brief': 'ВМ', 'id': '1021413', 'title': 'Вища математика'},
-  'teachers': [{'full_name': 'Литвин Олександра Григорівна',
-                'id': '950',
-                'short_name': 'Литвин О. Г.'}],
-  'type': 'Лк',
-  'updatedAt': '2023-09-04T23:35:05.218Z'}]
+  'id': '64030',
+  'number_pair': 3,
+  'start_time': '1695629700',
+  'subject': {'brief': 'ІМ', 'id': '1021424', 'title': 'Іноземна мова'},
+  'teachers': [{'full_name': 'Новіков Олексій Валентинович',
+                'id': '7278549',
+                'short_name': 'Новіков О. В.'}],
+  'type': 'Пз',
+  'updatedAt': '2023-09-22T17:10:31.347Z'},
+ {'auditory': 'спорт',
+  'end_time': '1695642300',
+  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
+  'id': '63852',
+  'number_pair': 4,
+  'start_time': '1695636600',
+  'subject': {'brief': 'ФВ',
+              'id': '8051836',
+              'title': 'Фізичне виховання (за рахунок вільного часу '
+                       'студентів)'},
+  'teachers': [],
+  'type': 'Пз',
+  'updatedAt': '2023-09-22T17:07:03.133Z'},
+ {'auditory': '324і',
+  'end_time': '1695635400',
+  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
+  'id': '63851',
+  'number_pair': 3,
+  'start_time': '1695629700',
+  'subject': {'brief': 'ІМ', 'id': '1021424', 'title': 'Іноземна мова'},
+  'teachers': [{'full_name': 'Новіков Олексій Валентинович',
+                'id': '7278549',
+                'short_name': 'Новіков О. В.'}],
+  'type': 'Пз',
+  'updatedAt': '2023-09-22T17:07:03.126Z'},
+ {'auditory': 'спорт',
+  'end_time': '1695642300',
+  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
+  'id': '6651',
+  'number_pair': 4,
+  'start_time': '1695636600',
+  'subject': {'brief': 'ФВ',
+              'id': '8051836',
+              'title': 'Фізичне виховання (за рахунок вільного часу '
+                       'студентів)'},
+  'teachers': [],
+  'type': 'Пз',
+  'updatedAt': '2023-09-18T16:30:21.540Z'},
+ {'auditory': '324і',
+  'end_time': '1695635400',
+  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
+  'id': '6650',
+  'number_pair': 3,
+  'start_time': '1695629700',
+  'subject': {'brief': 'ІМ', 'id': '1021424', 'title': 'Іноземна мова'},
+  'teachers': [{'full_name': 'Новіков Олексій Валентинович',
+                'id': '7278549',
+                'short_name': 'Новіков О. В.'}],
+  'type': 'Пз',
+  'updatedAt': '2023-09-18T16:30:21.533Z'}]
 ```
 
 ****************************************************************
