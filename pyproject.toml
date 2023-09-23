@@ -1,0 +1,18 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "nure_tools"
+authors = [{name = "pencel_z_kavunom", email = "soappguy@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)"]
+dynamic = ["version", "description"]
+dependencies = [
+    "requests >=2.31.0"
+]
+
+[project.urls]
+Home = "https://github.com/SoappGuy/nure_tools"

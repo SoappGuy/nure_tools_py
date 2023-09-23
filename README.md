@@ -94,7 +94,7 @@ pprint(groups)
 **Output:**
 
 ```ts
-[Group(id='11128338', name='ПЗПІиз-23-1'),
+[Group(id='11128338', name='ПЗПІ-23-1'),
  Group(id='10304333', name='КІУКІ-22-7'),
  Group(id='10307432', name='ІСТ-22-1'),
  ...
