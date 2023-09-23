@@ -246,7 +246,8 @@ pprint(schedule_group)
         subject=Subject(id='1021424', brief='ІМ', title='Іноземна мова'),
         teachers=[Teacher(id='7278549',
                           short_name='Новіков О. В.',
-                          full_name='Новіков Олексій Валентинович')])]
+                          full_name='Новіков Олексій Валентинович')])
+]
 
 [Lesson(id='69424',
         type='Пз',
@@ -259,7 +260,8 @@ pprint(schedule_group)
         subject=Subject(id='1021424', brief='ІМ', title='Іноземна мова'),
         teachers=[Teacher(id='7278549',
                           short_name='Новіков О. В.',
-                          full_name='Новіков Олексій Валентинович')])]
+                          full_name='Новіков Олексій Валентинович')])
+]
                           
 [Lesson(id='69613',
         type='Пз',
@@ -295,7 +297,8 @@ pprint(schedule_group)
                         title='Паралельне програмування'),
         teachers=[Teacher(id='7063375',
                           short_name='Кравець Н. С.',
-                          full_name='Кравець Наталя Сергіївна')])]                          
+                          full_name='Кравець Наталя Сергіївна')])
+ ]                          
 
 ```
 
