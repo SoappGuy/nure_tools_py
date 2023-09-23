@@ -28,6 +28,7 @@ class Subject:
     brief: str
     title: str
 
+
 @dataclass
 class Lesson:
     id: str
@@ -93,6 +94,9 @@ def get_auditoriums():
 def get_schedule(request_type, request_id, start_time, end_time):
     start_time = convert_time(start_time)
     end_time = convert_time(end_time)
+
+    if request_type not in ['group', 'teacher', 'auditory']:
+        raise ValueError('Invalid request type')
 
     schedule_respond = requests.get(
         f'https://nure-dev.pp.ua/api/schedule?type={request_type}&id={request_id}&start_time={start_time}&end_time={end_time}')
