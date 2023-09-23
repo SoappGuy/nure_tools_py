@@ -1,3 +1,7 @@
+"""Simple pyton library for nure-cist API"""
+
+__version__ = '1.0'
+
 import requests
 import time
 from dataclasses import dataclass

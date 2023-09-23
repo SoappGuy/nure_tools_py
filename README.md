@@ -14,22 +14,16 @@
 # Installation
 
 > (Python 3.10+)
- 
-### using bash/zsh/fish/etc (for linux)
 
 > **Warning**
 > If you using arch-based distro you may need to set venv first and use pip from that place.
 > PyCharm will make it automatically, just type following command in PyCharm terminal.
 
 ```shell
-git clone https://github.com/SoappGuy/nure_tools.git && cd ./nure_tools && python -m pip install -e .
+pip install nure_tools
 
 ```
 
-### using PowerShell (for windows)
-```shell
-git clone https://github.com/SoappGuy/nure_tools.git ; cd ./nure_tools ; python -m pip install -e .
-```
 ****************************************************************
 
 ## Functions

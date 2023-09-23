@@ -24,4 +24,3 @@ schedule_auditorium = nure_tools.get_schedule('auditory',
                                               "2023-09-25",
                                               "2023-09-26"
                                               )
-
