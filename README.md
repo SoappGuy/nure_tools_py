@@ -32,10 +32,6 @@ git clone https://github.com/SoappGuy/nure_tools.git ; cd ./nure_tools ; python 
 ```
 ****************************************************************
 
-# Examples
-> for more examples see [examples.py file](https://github.com/SoappGuy/nure_tools/blob/master/examples.py)
-
-
 ## Functions
 
 ### Get auditoriums
@@ -48,23 +44,40 @@ git clone https://github.com/SoappGuy/nure_tools.git ; cd ./nure_tools ; python 
 import nure_tools
 from pprint import pprint
 
-auditories = nure_tools.get_auditories()
-pprint(auditories)    
+auditoriums = nure_tools.get_auditoriums()
+pprint(auditoriums)    
+
 ```
 
 **Output:**
 
 ```ts
-[{'id': '172', 'name': '___0'},
- {'id': '3931027', 'name': '285'},
- {'id': '97', 'name': '287'},
- ...
- ...
-  {'id': '169', 'name': '165-6'},
- {'id': '1675427', 'name': '166вц'},
- {'id': '170', 'name': '167вц'}]
+ [Auditorium(id='10', name='каф.СІ'),
+  Auditorium(id='156', name='151-1'),
+  Auditorium(id='157', name='151-2'),
+  ...
+  Auditorium(id='169', name='165-6'),
+  Auditorium(id='1675427', name='166вц'),
+  Auditorium(id='170', name='167вц')]
 ```
 
+### Find an auditorium
+
+**Example:**
+
+```python
+import nure_tools
+
+print(nure_tools.find_auditorium("165-1"))
+```
+
+**Output:**
+
+```ts
+  Auditorium(id='165', name='165-1')
+```
+
+****************************************************************
 ****************************************************************
 
 ### Get groups
@@ -84,12 +97,13 @@ pprint(groups)
 **Output:**
 
 ```ts
-[{'id': '6949796', 'name': 'ЕЕК-18-1'},
- {'id': '7310687', 'name': 'ЕЕКи-18-1'},
+[Group(id='11128338', name='ПЗПІиз-23-1'),
+ Group(id='10304333', name='КІУКІ-22-7'),
+ Group(id='10307432', name='ІСТ-22-1'),
  ...
- ...
- {'id': '10486626', 'name': 'ЕЕКі-22-1'},
- {'id': '11106524', 'name': 'ЕЕКі-23-1'}]
+ Group(id='11103296', name='ПЗПІ-23-5'),
+ Group(id='10887382', name='ПЗПІ-23-3'),
+ Group(id='10307166', name='КУІБ-22-1')]
 ```
 
 ****************************************************************
@@ -107,7 +121,7 @@ print(nure_tools.find_group("пзпі-23-2"))
 **Output:**
 
 ```ts
-{'id': '10887378', 'name': 'ПЗПІ-23-2'}
+  Group(id='10887378', name='ПЗПІ-23-2')
 ```
 
 ****************************************************************
@@ -130,12 +144,19 @@ pprint(teachers)
 **Output:**
 
 ```ts
-[{'full_name': 'Боцюра Олеся Анатоліївна', 'id': '5343992', 'short_name': 'Боцюра О. А.'},
- {'full_name': 'Бутенко Ніна Семенівна', 'id': '1810189', 'short_name': 'Бутенко Н. С.'},
- ...
- ...
- {'full_name': 'Бабкова Н І', 'id': '7605119', 'short_name': 'Бабкова Н. І.'},
- {'full_name': 'Карпенко К І', 'id': '8769045', 'short_name': 'Карпенко К. І.'}]
+ [Teacher(id='7067189',
+         short_name='Богатов Є. О.',
+         full_name='Богатов Євген Олегович'),
+  Teacher(id='11127911',
+         short_name='Демчук В. Г.',
+         full_name='Демчук Вадим Геннадійович'),
+  ...
+  Teacher(id='7278549',
+         short_name='Новіков О. В.',
+         full_name='Новіков Олексій Валентинович'),
+  Teacher(id='2145721',
+         short_name='Новіков Ю. С.',
+         full_name='Новіков Юрій Сергійович')]
 ```
 
 ****************************************************************
@@ -154,12 +175,12 @@ pprint(nure_tools.find_teacher("Новіков"))
 **Output:**
 
 ```ts
-[{'full_name': 'Новіков Олексій Валентинович',
-  'id': '7278549',
-  'short_name': 'Новіков О. В.'},
- {'full_name': 'Новіков Юрій Сергійович',
-  'id': '2145721',
-  'short_name': 'Новіков Ю. С.'}]
+[Teacher(id='7278549',
+         short_name='Новіков О. В.',
+         full_name='Новіков Олексій Валентинович'),
+ Teacher(id='2145721',
+         short_name='Новіков Ю. С.',
+         full_name='Новіков Юрій Сергійович')]
 ```
 
 ****************************************************************
@@ -174,95 +195,108 @@ pprint(nure_tools.find_teacher("Новіков"))
 import nure_tools
 from pprint import pprint
 
-schedule = nure_tools.get_schedule('group',
-                                    nure_tools.find_group("пзпі-23-2")["id"],
-                                    "2023-09-25",
-                                    "2023-09-26"
-                                    )
+schedule_group = nure_tools.get_schedule('group',
+                                         nure_tools.find_group("пзпі-23-2").id,
+                                         "2023-09-25",
+                                         "2023-09-26"
+                                         )
+
+schedule_teacher = nure_tools.get_schedule('teacher',
+                                           nure_tools.find_teacher("Новіков О. В.")[0].id,
+                                           "2023-09-25",
+                                           "2023-09-26"
+                                           )
+
+schedule_auditorium = nure_tools.get_schedule('auditory',
+                                              nure_tools.find_auditorium("287").id,
+                                              "2023-09-25",
+                                              "2023-09-26"
+                                              )
 
 
-pprint(schedule)
+pprint(schedule_group)
+
 
 ```
 
 **Output:**
 
 ```ts
-[{'auditory': 'спорт',
-  'end_time': '1695642300',
-  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
-  'id': '64031',
-  'number_pair': 4,
-  'start_time': '1695636600',
-  'subject': {'brief': 'ФВ',
-              'id': '8051836',
-              'title': 'Фізичне виховання (за рахунок вільного часу '
-                       'студентів)'},
-  'teachers': [],
-  'type': 'Пз',
-  'updatedAt': '2023-09-22T17:10:31.354Z'},
- {'auditory': '324і',
-  'end_time': '1695635400',
-  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
-  'id': '64030',
-  'number_pair': 3,
-  'start_time': '1695629700',
-  'subject': {'brief': 'ІМ', 'id': '1021424', 'title': 'Іноземна мова'},
-  'teachers': [{'full_name': 'Новіков Олексій Валентинович',
-                'id': '7278549',
-                'short_name': 'Новіков О. В.'}],
-  'type': 'Пз',
-  'updatedAt': '2023-09-22T17:10:31.347Z'},
- {'auditory': 'спорт',
-  'end_time': '1695642300',
-  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
-  'id': '63852',
-  'number_pair': 4,
-  'start_time': '1695636600',
-  'subject': {'brief': 'ФВ',
-              'id': '8051836',
-              'title': 'Фізичне виховання (за рахунок вільного часу '
-                       'студентів)'},
-  'teachers': [],
-  'type': 'Пз',
-  'updatedAt': '2023-09-22T17:07:03.133Z'},
- {'auditory': '324і',
-  'end_time': '1695635400',
-  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
-  'id': '63851',
-  'number_pair': 3,
-  'start_time': '1695629700',
-  'subject': {'brief': 'ІМ', 'id': '1021424', 'title': 'Іноземна мова'},
-  'teachers': [{'full_name': 'Новіков Олексій Валентинович',
-                'id': '7278549',
-                'short_name': 'Новіков О. В.'}],
-  'type': 'Пз',
-  'updatedAt': '2023-09-22T17:07:03.126Z'},
- {'auditory': 'спорт',
-  'end_time': '1695642300',
-  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
-  'id': '6651',
-  'number_pair': 4,
-  'start_time': '1695636600',
-  'subject': {'brief': 'ФВ',
-              'id': '8051836',
-              'title': 'Фізичне виховання (за рахунок вільного часу '
-                       'студентів)'},
-  'teachers': [],
-  'type': 'Пз',
-  'updatedAt': '2023-09-18T16:30:21.540Z'},
- {'auditory': '324і',
-  'end_time': '1695635400',
-  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
-  'id': '6650',
-  'number_pair': 3,
-  'start_time': '1695629700',
-  'subject': {'brief': 'ІМ', 'id': '1021424', 'title': 'Іноземна мова'},
-  'teachers': [{'full_name': 'Новіков Олексій Валентинович',
-                'id': '7278549',
-                'short_name': 'Новіков О. В.'}],
-  'type': 'Пз',
-  'updatedAt': '2023-09-18T16:30:21.533Z'}]
+[Lesson(id='69425',
+        type='Пз',
+        auditorium=Auditorium(id='-4', name='спорт'),
+        number_pair=4,
+        start_time='1695636600',
+        end_time='1695642300',
+        groups=[Group(id='10887378', name='ПЗПІ-23-2')],
+        updated_at='2023-09-23T08:35:40.450Z',
+        subject=Subject(id='8051836',
+                        brief='ФВ',
+                        title='Фізичне виховання (за рахунок вільного часу '
+                              'студентів)'),
+        teachers=[]),
+ Lesson(id='69424',
+        type='Пз',
+        auditorium=Auditorium(id='6139762', name='324і'),
+        number_pair=3,
+        start_time='1695629700',
+        end_time='1695635400',
+        groups=[Group(id='10887378', name='ПЗПІ-23-2')],
+        updated_at='2023-09-23T08:35:40.443Z',
+        subject=Subject(id='1021424', brief='ІМ', title='Іноземна мова'),
+        teachers=[Teacher(id='7278549',
+                          short_name='Новіков О. В.',
+                          full_name='Новіков Олексій Валентинович')])]
+
+[Lesson(id='69424',
+        type='Пз',
+        auditorium=Auditorium(id='6139762', name='324і'),
+        number_pair=3,
+        start_time='1695629700',
+        end_time='1695635400',
+        groups=[Group(id='10887378', name='ПЗПІ-23-2')],
+        updated_at='2023-09-23T08:35:40.443Z',
+        subject=Subject(id='1021424', brief='ІМ', title='Іноземна мова'),
+        teachers=[Teacher(id='7278549',
+                          short_name='Новіков О. В.',
+                          full_name='Новіков Олексій Валентинович')])]
+                          
+[Lesson(id='69613',
+        type='Пз',
+        auditorium=Auditorium(id='97', name='287'),
+        number_pair=3,
+        start_time='1695629700',
+        end_time='1695635400',
+        groups=[Group(id='8476408', name='ПЗПІ-20-8'),
+                Group(id='8744039', name='ПЗПІ-20-5'),
+                Group(id='8744041', name='ПЗПІ-20-10'),
+                Group(id='8476364', name='ПЗПІ-20-7'),
+                Group(id='8476572', name='ПЗПІ-20-9')],
+        updated_at='2023-09-23T09:03:34.022Z',
+        subject=Subject(id='10888509',
+                        brief='*ОКР',
+                        title='*Основи колективної роботи над проектом'),
+        teachers=[Teacher(id='3204550',
+                          short_name='Голян Н. В.',
+                          full_name='Голян Наталія Вікторівна')]),
+ 
+ ....
+ 
+ Lesson(id='69611',
+        type='Лб',
+        auditorium=Auditorium(id='97', name='287'),
+        number_pair=1,
+        start_time='1695617100',
+        end_time='1695622800',
+        groups=[Group(id='9291678', name='ПЗПІ-21-6')],
+        updated_at='2023-09-23T09:03:33.995Z',
+        subject=Subject(id='1989780',
+                        brief='ПарП',
+                        title='Паралельне програмування'),
+        teachers=[Teacher(id='7063375',
+                          short_name='Кравець Н. С.',
+                          full_name='Кравець Наталя Сергіївна')])]                          
+
 ```
 
 ****************************************************************
