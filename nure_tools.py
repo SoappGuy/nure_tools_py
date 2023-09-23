@@ -47,7 +47,7 @@ class Lesson:
     teachers: list[Teacher]
 
 
-def convert_time(time_toconvert):
+def convert_time(time_toconvert, pattern):
     if type(time_toconvert) is int:
         try:
             time.strptime(time.ctime(time_toconvert))
@@ -56,10 +56,10 @@ def convert_time(time_toconvert):
             raise ValueError(f"Invalid timestamp was given: {time_toconvert}")
     elif type(time_toconvert) is str:
         try:
-            timestamp = int(time.mktime(time.strptime(time_toconvert, "%Y-%m-%d")))
+            timestamp = int(time.mktime(time.strptime(time_toconvert, pattern)))
             return timestamp
         except ValueError:
-            raise ValueError("Unable to parse the input time string.\nBe sure to write time in format like '2023-09-27")
+            raise ValueError(f"Unable to parse the input time string.\nBe sure to write time in format like {pattern}")
     else:
         raise ValueError("Invalid input type was given.")
 
@@ -95,9 +95,9 @@ def get_auditoriums():
         return f'Error: {auditoriums_respond.status_code}'
 
 
-def get_schedule(request_type, request_id, start_time, end_time):
-    start_time = convert_time(start_time)
-    end_time = convert_time(end_time)
+def get_schedule(request_type, request_id, start_time, end_time, pattern="%Y-%m-%d %H:%M"):
+    start_time = convert_time(start_time, pattern)
+    end_time = convert_time(end_time, pattern)
 
     if request_type not in ['group', 'teacher', 'auditory']:
         raise ValueError('Invalid request type')
