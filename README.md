@@ -10,6 +10,9 @@
 > And don't forget to star [nure-cist-api](https://github.com/nure-dev/nure-cist-api)
 
 ****************************************************************
+# PyPi
+> [Project page on PyPi](https://pypi.org/project/nure_tools/)
+
 
 # Installation
 
