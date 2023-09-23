@@ -1,6 +1,6 @@
 """Simple pyton library for nure-cist API"""
 
-__version__ = '1.0'
+__version__ = '1.1'
 
 import requests
 import time
