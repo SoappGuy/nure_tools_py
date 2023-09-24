@@ -4,47 +4,6 @@ __version__ = '1.2'
 
 import requests
 import time
-from dataclasses import dataclass
-
-
-@dataclass
-class Group:
-    id: str
-    name: str
-
-
-@dataclass
-class Teacher:
-    id: str
-    short_name: str
-    full_name: str
-
-
-@dataclass
-class Auditorium:
-    id: str
-    name: str
-
-
-@dataclass
-class Subject:
-    id: str
-    brief: str
-    title: str
-
-
-@dataclass
-class Lesson:
-    id: str
-    type: str
-    auditorium: Auditorium
-    number_pair: str
-    start_time: str
-    end_time: str
-    groups: list[Group]
-    updated_at: str
-    subject: Subject
-    teachers: list[Teacher]
 
 
 def convert_time(time_toconvert, pattern):
@@ -68,8 +27,7 @@ def get_groups():
     groups_respond = requests.get('https://nure-dev.pp.ua/api/groups')
 
     if groups_respond.status_code == 200:
-        return [Group(id=group["id"],
-                      name=group["name"]) for group in groups_respond.json()]
+        return groups_respond.json()
     else:
         return f'Error: {groups_respond.status_code}'
 
@@ -78,9 +36,7 @@ def get_teachers():
     teachers_respond = requests.get('https://nure-dev.pp.ua/api/teachers')
 
     if teachers_respond.status_code == 200:
-        return [Teacher(id=teacher["id"],
-                        short_name=teacher["short_name"],
-                        full_name=teacher["full_name"]) for teacher in teachers_respond.json()]
+        return teachers_respond.json()
     else:
         return f'Error: {teachers_respond.status_code}'
 
@@ -89,8 +45,7 @@ def get_auditoriums():
     auditoriums_respond = requests.get('https://nure-dev.pp.ua/api/auditories')
 
     if auditoriums_respond.status_code == 200:
-        return [Auditorium(id=auditorium["id"],
-                           name=auditorium["name"]) for auditorium in auditoriums_respond.json()]
+        return auditoriums_respond.json()
     else:
         return f'Error: {auditoriums_respond.status_code}'
 
@@ -106,25 +61,7 @@ def get_schedule(request_type, request_id, start_time, end_time, pattern="%Y-%m-
         f'https://nure-dev.pp.ua/api/schedule?type={request_type}&id={request_id}&start_time={start_time}&end_time={end_time}')
 
     if schedule_respond.status_code == 200:
-        return [Lesson(id=lesson["id"],
-                       type=lesson["type"],
-                       auditorium=find_auditorium(lesson["auditory"]),
-                       number_pair=lesson["number_pair"],
-                       start_time=lesson["start_time"],
-                       end_time=lesson["end_time"],
-                       updated_at=lesson["updatedAt"],
-
-                       groups=[Group(id=group["id"],
-                                     name=group["name"]) for group in lesson["groups"]],
-
-                       subject=Subject(id=lesson["subject"]["id"],
-                                       brief=lesson["subject"]["brief"],
-                                       title=lesson["subject"]["title"]),
-
-                       teachers=[Teacher(id=teacher["id"],
-                                         short_name=teacher["short_name"],
-                                         full_name=teacher["full_name"]) for teacher in lesson["teachers"]])
-                for lesson in schedule_respond.json()]
+        return schedule_respond.json()
     else:
         return f'Error: {schedule_respond.status_code}'
 
@@ -132,7 +69,7 @@ def get_schedule(request_type, request_id, start_time, end_time, pattern="%Y-%m-
 def find_group(group_name):
     groups = get_groups()
     for group in groups:
-        if group.name == group_name.upper():
+        if group["name"] == group_name.upper():
             return group
     raise ValueError(f"Couldn\'t find group \"{group_name}\"")
 
@@ -145,11 +82,11 @@ def find_teacher(teacher_name):
     result = []
     for teacher in teachers:
         if teacher_name[-1] == '.':
-            if teacher.short_name.lower() == teacher_name:
+            if teacher["short_name"].lower() == teacher_name:
                 result.append(teacher)
                 return result
         else:
-            if teacher_name in teacher.short_name.lower():
+            if teacher_name in teacher["short_name"].lower():
                 result.append(teacher)
 
     if len(result) != 0:
@@ -161,6 +98,6 @@ def find_teacher(teacher_name):
 def find_auditorium(auditorium_name):
     auditoriums = get_auditoriums()
     for auditorium in auditoriums:
-        if auditorium.name == auditorium_name:
+        if auditorium["name"] == auditorium_name:
             return auditorium
     raise ValueError(f"Couldn\'t find group \"{auditorium_name}\"")
