@@ -1,6 +1,6 @@
 """Simple pyton library for nure-cist API"""
 
-__version__ = '1.3'
+__version__ = '1.4'
 
 import requests
 import time
@@ -27,7 +27,11 @@ def get_groups():
     groups_respond = requests.get('https://nure-dev.pp.ua/api/groups')
 
     if groups_respond.status_code == 200:
-        return groups_respond.json()
+        respond = []
+        for group in groups_respond.json():
+            group["id"] = int(group["id"])
+            respond.append(group)
+        return respond
     else:
         return f'Error: {groups_respond.status_code}'
 
@@ -36,7 +40,11 @@ def get_teachers():
     teachers_respond = requests.get('https://nure-dev.pp.ua/api/teachers')
 
     if teachers_respond.status_code == 200:
-        return teachers_respond.json()
+        respond = []
+        for teacher in teachers_respond.json():
+            teacher["id"] = int(teacher["id"])
+            respond.append(teacher)
+        return respond
     else:
         return f'Error: {teachers_respond.status_code}'
 
@@ -45,7 +53,11 @@ def get_auditoriums():
     auditoriums_respond = requests.get('https://nure-dev.pp.ua/api/auditories')
 
     if auditoriums_respond.status_code == 200:
-        return auditoriums_respond.json()
+        respond = []
+        for auditorium in auditoriums_respond.json():
+            auditorium["id"] = int(auditorium["id"])
+            respond.append(auditorium)
+        return respond
     else:
         return f'Error: {auditoriums_respond.status_code}'
 
@@ -61,7 +73,28 @@ def get_schedule(request_type, request_id, start_time, end_time, pattern="%Y-%m-
         f'https://nure-dev.pp.ua/api/schedule?type={request_type}&id={request_id}&start_time={start_time}&end_time={end_time}')
 
     if schedule_respond.status_code == 200:
-        return schedule_respond.json()
+        respond = []
+        for lesson in schedule_respond.json():
+            lesson["id"] = int(lesson["id"])
+            lesson["start_time"] = int(lesson["start_time"])
+            lesson["end_time"] = int(lesson["end_time"])
+            lesson["subject"]["id"] = int(lesson["subject"]["id"])
+
+            teachers = []
+            for teacher in lesson["teachers"]:
+                teacher["id"] = int(teacher["id"])
+                teachers.append(teacher)
+            lesson["teachers"] = teachers
+
+            groups = []
+            for group in lesson["groups"]:
+                group["id"] = int(group["id"])
+                groups.append(group)
+            lesson["groups"] = groups
+
+            respond.append(lesson)
+
+        return respond
     else:
         return f'Error: {schedule_respond.status_code}'
 
