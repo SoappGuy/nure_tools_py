@@ -49,13 +49,13 @@ pprint(auditoriums)
 **Output:**
 
 ```ts
- [Auditorium(id='10', name='каф.СІ'),
-  Auditorium(id='156', name='151-1'),
-  Auditorium(id='157', name='151-2'),
-  ...
-  Auditorium(id='169', name='165-6'),
-  Auditorium(id='1675427', name='166вц'),
-  Auditorium(id='170', name='167вц')]
+ [{'id': '167', 'name': '165-3'},
+ {'id': '168', 'name': '165-5'},
+ {'id': '169', 'name': '165-6'},
+ ...
+ {'id': '1675427', 'name': '166вц'},
+ {'id': '170', 'name': '167вц'},
+ {'id': '97', 'name': '287'}]
 ```
 
 ### Find an auditorium
@@ -71,7 +71,7 @@ print(nure_tools.find_auditorium("165-1"))
 **Output:**
 
 ```ts
-  Auditorium(id='165', name='165-1')
+{'id': '165', 'name': '165-1'}
 ```
 
 ****************************************************************
@@ -94,13 +94,13 @@ pprint(groups)
 **Output:**
 
 ```ts
-[Group(id='11128338', name='ПЗПІ-23-1'),
- Group(id='10304333', name='КІУКІ-22-7'),
- Group(id='10307432', name='ІСТ-22-1'),
+[{'id': '10887382', 'name': 'ПЗПІ-23-3'},
+ {'id': '10284397', 'name': 'ЕЕПСу-22-1'},
+ {'id': '10307166', 'name': 'КУІБ-22-1'},
  ...
- Group(id='11103296', name='ПЗПІ-23-5'),
- Group(id='10887382', name='ПЗПІ-23-3'),
- Group(id='10307166', name='КУІБ-22-1')]
+ {'id': '10307432', 'name': 'ІСТ-22-1'},
+ {'id': '10887104', 'name': 'КІУКІ-23-7'},
+ {'id': '10887108', 'name': 'КІУКІу-23-1'}]
 ```
 
 ****************************************************************
@@ -118,7 +118,7 @@ print(nure_tools.find_group("пзпі-23-2"))
 **Output:**
 
 ```ts
-  Group(id='10887378', name='ПЗПІ-23-2')
+{'id': '10887378', 'name': 'ПЗПІ-23-2'}
 ```
 
 ****************************************************************
@@ -141,19 +141,19 @@ pprint(teachers)
 **Output:**
 
 ```ts
- [Teacher(id='7067189',
-         short_name='Богатов Є. О.',
-         full_name='Богатов Євген Олегович'),
-  Teacher(id='11127911',
-         short_name='Демчук В. Г.',
-         full_name='Демчук Вадим Геннадійович'),
+ [{'full_name': 'Богатов Євген Олегович',
+  'id': '7067189',
+  'short_name': 'Богатов Є. О.'},
+ {'full_name': 'Демчук Вадим Геннадійович',
+  'id': '11127911',
+  'short_name': 'Демчук В. Г.'},
   ...
-  Teacher(id='7278549',
-         short_name='Новіков О. В.',
-         full_name='Новіков Олексій Валентинович'),
-  Teacher(id='2145721',
-         short_name='Новіков Ю. С.',
-         full_name='Новіков Юрій Сергійович')]
+ {'full_name': 'Новіков Юрій Сергійович',
+  'id': '2145721',
+  'short_name': 'Новіков Ю. С.'},
+ {'full_name': 'Новіков Олексій Валентинович',
+  'id': '7278549',
+  'short_name': 'Новіков О. В.'}]
 ```
 
 ****************************************************************
@@ -172,12 +172,12 @@ pprint(nure_tools.find_teacher("Новіков"))
 **Output:**
 
 ```ts
-[Teacher(id='7278549',
-         short_name='Новіков О. В.',
-         full_name='Новіков Олексій Валентинович'),
- Teacher(id='2145721',
-         short_name='Новіков Ю. С.',
-         full_name='Новіков Юрій Сергійович')]
+[{'full_name': 'Новіков Юрій Сергійович',
+  'id': '2145721',
+  'short_name': 'Новіков Ю. С.'},
+ {'full_name': 'Новіков Олексій Валентинович',
+  'id': '7278549',
+  'short_name': 'Новіков О. В.'}]
 ```
 
 ****************************************************************
@@ -216,90 +216,93 @@ schedule_auditorium = nure_tools.get_schedule('auditory',
 
 
 pprint(schedule_group)
-
+pprint(schedule_teacher)
+pprint(schedule_auditorium)
 
 ```
 
 **Output:**
 
 ```ts
-[Lesson(id='69425',
-        type='Пз',
-        auditorium=Auditorium(id='-4', name='спорт'),
-        number_pair=4,
-        start_time='1695636600',
-        end_time='1695642300',
-        groups=[Group(id='10887378', name='ПЗПІ-23-2')],
-        updated_at='2023-09-23T08:35:40.450Z',
-        subject=Subject(id='8051836',
-                        brief='ФВ',
-                        title='Фізичне виховання (за рахунок вільного часу '
-                              'студентів)'),
-        teachers=[]),
- Lesson(id='69424',
-        type='Пз',
-        auditorium=Auditorium(id='6139762', name='324і'),
-        number_pair=3,
-        start_time='1695629700',
-        end_time='1695635400',
-        groups=[Group(id='10887378', name='ПЗПІ-23-2')],
-        updated_at='2023-09-23T08:35:40.443Z',
-        subject=Subject(id='1021424', brief='ІМ', title='Іноземна мова'),
-        teachers=[Teacher(id='7278549',
-                          short_name='Новіков О. В.',
-                          full_name='Новіков Олексій Валентинович')])
+[{'auditory': '324і',
+  'end_time': '1695635400',
+  'groups': [{'id': '10887378', 'name': 'ПЗПІ-23-2'}],
+  'id': '78260',
+  'number_pair': 3,
+  'start_time': '1695629700',
+  'subject': {'brief': 'ІМ', 'id': '1021424', 'title': 'Іноземна мова'},
+  'teachers': [{'full_name': 'Новіков Олексій Валентинович',
+                'id': '7278549',
+                'short_name': 'Новіков О. В.'}],
+  'type': 'Пз',
+  'updatedAt': '2023-09-24T03:15:06.251Z'}
 ]
 
-[Lesson(id='69424',
-        type='Пз',
-        auditorium=Auditorium(id='6139762', name='324і'),
-        number_pair=3,
-        start_time='1695629700',
-        end_time='1695635400',
-        groups=[Group(id='10887378', name='ПЗПІ-23-2')],
-        updated_at='2023-09-23T08:35:40.443Z',
-        subject=Subject(id='1021424', brief='ІМ', title='Іноземна мова'),
-        teachers=[Teacher(id='7278549',
-                          short_name='Новіков О. В.',
-                          full_name='Новіков Олексій Валентинович')])
-]
-                          
-[Lesson(id='69613',
-        type='Пз',
-        auditorium=Auditorium(id='97', name='287'),
-        number_pair=3,
-        start_time='1695629700',
-        end_time='1695635400',
-        groups=[Group(id='8476408', name='ПЗПІ-20-8'),
-                Group(id='8744039', name='ПЗПІ-20-5'),
-                Group(id='8744041', name='ПЗПІ-20-10'),
-                Group(id='8476364', name='ПЗПІ-20-7'),
-                Group(id='8476572', name='ПЗПІ-20-9')],
-        updated_at='2023-09-23T09:03:34.022Z',
-        subject=Subject(id='10888509',
-                        brief='*ОКР',
-                        title='*Основи колективної роботи над проектом'),
-        teachers=[Teacher(id='3204550',
-                          short_name='Голян Н. В.',
-                          full_name='Голян Наталія Вікторівна')]),
- 
- ....
- 
- Lesson(id='69611',
-        type='Лб',
-        auditorium=Auditorium(id='97', name='287'),
-        number_pair=1,
-        start_time='1695617100',
-        end_time='1695622800',
-        groups=[Group(id='9291678', name='ПЗПІ-21-6')],
-        updated_at='2023-09-23T09:03:33.995Z',
-        subject=Subject(id='1989780',
-                        brief='ПарП',
-                        title='Паралельне програмування'),
-        teachers=[Teacher(id='7063375',
-                          short_name='Кравець Н. С.',
-                          full_name='Кравець Наталя Сергіївна')])
- ]                          
+[{'auditory': '287',
+  'end_time': '1695728700',
+  'groups': [{'id': '10284309', 'name': 'ПЗПІ-22-2'}],
+  'id': '78422',
+  'number_pair': 4,
+  'start_time': '1695723000',
+  'subject': {'brief': 'ВдоIT',
+              'id': '5682810',
+              'title': 'Введення до IT-бізнесу'},
+  'teachers': [],
+  'type': 'Пз',
+  'updatedAt': '2023-09-24T08:13:39.459Z'},
+
+.........
+
+ {'auditory': '287',
+  'end_time': '1695635400',
+  'groups': [{'id': '8476408', 'name': 'ПЗПІ-20-8'},
+             {'id': '8744039', 'name': 'ПЗПІ-20-5'},
+             {'id': '8476364', 'name': 'ПЗПІ-20-7'},
+             {'id': '8476572', 'name': 'ПЗПІ-20-9'},
+             {'id': '8744041', 'name': 'ПЗПІ-20-10'}],
+  'id': '78421',
+  'number_pair': 3,
+  'start_time': '1695629700',
+  'subject': {'brief': '*ОКР',
+              'id': '10888509',
+              'title': '*Основи колективної роботи над проектом'},
+  'teachers': [],
+  'type': 'Пз',
+  'updatedAt': '2023-09-24T08:13:39.439Z'}
+] 
+
+[{'auditory': '287',
+  'end_time': '1695629100',
+  'groups': [{'id': '9291678', 'name': 'ПЗПІ-21-6'}],
+  'id': '78420',
+  'number_pair': 2,
+  'start_time': '1695623400',
+  'subject': {'brief': 'ПарП',
+              'id': '1989780',
+              'title': 'Паралельне програмування'},
+  'teachers': [{'full_name': 'Кравець Наталя Сергіївна',
+                'id': '7063375',
+                'short_name': 'Кравець Н. С.'}],
+  'type': 'Лб',
+  'updatedAt': '2023-09-24T08:13:39.429Z'},
+
+.........
+
+ {'auditory': '287',
+  'end_time': '1695622800',
+  'groups': [{'id': '9291678', 'name': 'ПЗПІ-21-6'}],
+  'id': '78419',
+  'number_pair': 1,
+  'start_time': '1695617100',
+  'subject': {'brief': 'ПарП',
+              'id': '1989780',
+              'title': 'Паралельне програмування'},
+  'teachers': [{'full_name': 'Кравець Наталя Сергіївна',
+                'id': '7063375',
+                'short_name': 'Кравець Н. С.'}],
+  'type': 'Лб',
+  'updatedAt': '2023-09-24T08:13:39.420Z'}
+] 
 
 ```
 
