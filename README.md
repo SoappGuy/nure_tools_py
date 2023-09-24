@@ -19,7 +19,7 @@
 > (Python 3.10+)
 
 > **Warning**
-> If you using arch-based distro you may need to set venv first and use pip from that place.
+> If you are using arch-based distro you may need to set venv first and use pip from that place.
 > PyCharm will make it automatically, just type following command in PyCharm terminal.
 
 ```shell
@@ -196,20 +196,20 @@ from pprint import pprint
 # like in example below
 
 schedule_group = nure_tools.get_schedule('group',
-                                         nure_tools.find_group("пзпі-23-2").id,
+                                         nure_tools.find_group("пзпі-23-2")["id"],
                                          "2023-09-25",
                                          "2023-09-26",
                                          pattern="%Y-%m-%d"
                                          )
 
 schedule_teacher = nure_tools.get_schedule('teacher',
-                                           nure_tools.find_teacher("Новіков О. В.")[0].id,
+                                           nure_tools.find_teacher("Новіков О. В.")[0]["id"],
                                            "2023-09-25 00:00",
                                            "2023-09-26 16:30"
                                            )
 
 schedule_auditorium = nure_tools.get_schedule('auditory',
-                                              nure_tools.find_auditorium("287").id,
+                                              nure_tools.find_auditorium("287")["id"],
                                               "2023-09-25 00:00",
                                               "2023-09-26 16:30"
                                               )
