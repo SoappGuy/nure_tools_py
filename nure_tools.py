@@ -1,6 +1,6 @@
 """Simple pyton library for nure-cist API"""
 
-__version__ = '1.4'
+__version__ = '1.5'
 
 import requests
 import time
@@ -33,7 +33,7 @@ def get_groups():
             respond.append(group)
         return respond
     else:
-        return f'Error: {groups_respond.status_code}'
+        raise ValueError(f'Error: {groups_respond.status_code}')
 
 
 def get_teachers():
@@ -46,7 +46,7 @@ def get_teachers():
             respond.append(teacher)
         return respond
     else:
-        return f'Error: {teachers_respond.status_code}'
+        raise ValueError(f'Error: {teachers_respond.status_code}')
 
 
 def get_auditoriums():
@@ -59,7 +59,7 @@ def get_auditoriums():
             respond.append(auditorium)
         return respond
     else:
-        return f'Error: {auditoriums_respond.status_code}'
+        raise ValueError(f'Error: {auditoriums_respond.status_code}')
 
 
 def get_schedule(request_type, request_id, start_time, end_time, pattern="%Y-%m-%d %H:%M"):
@@ -96,7 +96,7 @@ def get_schedule(request_type, request_id, start_time, end_time, pattern="%Y-%m-
 
         return respond
     else:
-        return f'Error: {schedule_respond.status_code}'
+        raise ValueError(f'Error: {schedule_respond.status_code}')
 
 
 def find_group(group_name):
