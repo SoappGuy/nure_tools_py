@@ -1,6 +1,6 @@
 """Simple pyton library for nure-cist API"""
 
-__version__ = '1.5'
+__version__ = '1.6'
 
 import requests
 import time
@@ -102,7 +102,7 @@ def get_schedule(request_type, request_id, start_time, end_time, pattern="%Y-%m-
 def find_group(group_name):
     groups = get_groups()
     for group in groups:
-        if group["name"] == group_name.upper():
+        if group["name"].upper() == group_name.upper():
             return group
     raise ValueError(f"Couldn\'t find group \"{group_name}\"")
 
