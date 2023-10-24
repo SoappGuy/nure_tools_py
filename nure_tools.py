@@ -6,7 +6,6 @@ import requests
 import time
 
 
-
 def convert_time(time_toconvert, pattern):
     if type(time_toconvert) is int:
         try:
