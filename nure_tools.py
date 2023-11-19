@@ -4,10 +4,10 @@ __version__ = '1.6'
 
 import requests
 import time
+from typing import Literal
 
 
-
-def convert_time(time_toconvert, pattern):
+def convert_time(time_toconvert: str | int, pattern: str) -> int:
     if type(time_toconvert) is int:
         try:
             time.strptime(time.ctime(time_toconvert))
@@ -24,7 +24,7 @@ def convert_time(time_toconvert, pattern):
         raise ValueError("Invalid input type was given.")
 
 
-def get_groups():
+def get_groups() -> list:
     groups_respond = requests.get('https://nure-dev.pp.ua/api/groups')
 
     if groups_respond.status_code == 200:
@@ -34,10 +34,10 @@ def get_groups():
             respond.append(group)
         return respond
     else:
-        raise ValueError(f'Error: {groups_respond.status_code}')
+        groups_respond.raise_for_status()
 
 
-def get_teachers():
+def get_teachers() -> list:
     teachers_respond = requests.get('https://nure-dev.pp.ua/api/teachers')
 
     if teachers_respond.status_code == 200:
@@ -47,10 +47,10 @@ def get_teachers():
             respond.append(teacher)
         return respond
     else:
-        raise ValueError(f'Error: {teachers_respond.status_code}')
+        teachers_respond.raise_for_status()
 
 
-def get_auditoriums():
+def get_auditoriums() -> list:
     auditoriums_respond = requests.get('https://nure-dev.pp.ua/api/auditories')
 
     if auditoriums_respond.status_code == 200:
@@ -60,10 +60,15 @@ def get_auditoriums():
             respond.append(auditorium)
         return respond
     else:
-        raise ValueError(f'Error: {auditoriums_respond.status_code}')
+        auditoriums_respond.raise_for_status()
 
 
-def get_schedule(request_type, request_id, start_time, end_time, pattern="%Y-%m-%d %H:%M"):
+def get_schedule(request_type: Literal['group', 'teacher', 'auditory'],
+                 request_id: int,
+                 start_time: str,
+                 end_time: str,
+                 pattern: str = "%Y-%m-%d %H:%M"
+                 ) -> list:
     start_time = convert_time(start_time, pattern)
     end_time = convert_time(end_time, pattern)
 
@@ -97,18 +102,18 @@ def get_schedule(request_type, request_id, start_time, end_time, pattern="%Y-%m-
 
         return respond
     else:
-        raise ValueError(f'Error: {schedule_respond.status_code}')
+        schedule_respond.raise_for_status()
 
 
-def find_group(group_name):
+def find_group(group_name: str) -> list:
     groups = get_groups()
     for group in groups:
-        if group["name"].upper() == group_name.upper():
+        if group["name"].lower() == group_name.lower():
             return group
     raise ValueError(f"Couldn\'t find group \"{group_name}\"")
 
 
-def find_teacher(teacher_name):
+def find_teacher(teacher_name: str) -> list:
 
     teacher_name = teacher_name.lower()
     teachers = get_teachers()
@@ -129,7 +134,7 @@ def find_teacher(teacher_name):
     raise ValueError(f"Couldn\'t find teacher \"{teacher_name}\", make shour that you wrote name correctly (for example \"Саманцов О. О.\" or \"Саманцов\")")
 
 
-def find_auditorium(auditorium_name):
+def find_auditorium(auditorium_name: str) -> list:
     auditoriums = get_auditoriums()
     for auditorium in auditoriums:
         if auditorium["name"] == auditorium_name:

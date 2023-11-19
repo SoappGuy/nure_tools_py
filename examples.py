@@ -1,5 +1,6 @@
 import nure_tools
 from pprint import pprint
+from icecream import ic
 
 groups = nure_tools.get_groups()
 teachers = nure_tools.get_teachers()
@@ -29,4 +30,3 @@ schedule_auditorium = nure_tools.get_schedule('auditory',
                                               "2023-09-25 00:00",
                                               "2023-09-26 16:30"
                                               )
-
