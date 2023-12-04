@@ -3,12 +3,7 @@
 > **Warning**
 > The library is still under development. I will be happy to receive any feedback, and you can feel free to improve my code
 
-> Simple pyton library for nure-cist API
-
-> You can also check out [NodeJS library](https://github.com/OneLiL05/nurekit) made by OneLil05
-
-> And don't forget to star [nure-cist-api](https://github.com/nure-dev/nure-cist-api)
-
+> Simple pyton library for Mindenit API
 ****************************************************************
 # PyPi
 > [Project page on PyPi](https://pypi.org/project/nure_tools/)
@@ -141,19 +136,19 @@ pprint(teachers)
 **Output:**
 
 ```ts
- [{'full_name': 'Богатов Євген Олегович',
+ [{'fullName': 'Богатов Євген Олегович',
   'id': 7067189,
-  'short_name': 'Богатов Є. О.'},
- {'full_name': 'Демчук Вадим Геннадійович',
+  'shortName': 'Богатов Є. О.'},
+ {'fullName': 'Демчук Вадим Геннадійович',
   'id': 11127911,
-  'short_name': 'Демчук В. Г.'},
+  'shortName': 'Демчук В. Г.'},
   ...
- {'full_name': 'Новіков Юрій Сергійович',
+ {'fullName': 'Новіков Юрій Сергійович',
   'id': 2145721,
-  'short_name': 'Новіков Ю. С.'},
- {'full_name': 'Новіков Олексій Валентинович',
+  'shortName': 'Новіков Ю. С.'},
+ {'fullName': 'Новіков Олексій Валентинович',
   'id': 7278549,
-  'short_name': 'Новіков О. В.'}]
+  'shortName': 'Новіков О. В.'}]
 ```
 
 ****************************************************************
@@ -172,12 +167,12 @@ pprint(nure_tools.find_teacher("Новіков"))
 **Output:**
 
 ```ts
-[{'full_name': 'Новіков Юрій Сергійович',
+[{'fullName': 'Новіков Юрій Сергійович',
   'id': 2145721,
-  'short_name': 'Новіков Ю. С.'},
- {'full_name': 'Новіков Олексій Валентинович',
+  'shortName': 'Новіков Ю. С.'},
+ {'fullName': 'Новіков Олексій Валентинович',
   'id': 7278549,
-  'short_name': 'Новіков О. В.'}]
+  'shortName': 'Новіков О. В.'}]
 ```
 
 ****************************************************************
@@ -231,9 +226,9 @@ pprint(schedule_auditorium)
   'number_pair': 3,
   'start_time': 1695629700,
   'subject': {'brief': 'ІМ', 'id': 1021424, 'title': 'Іноземна мова'},
-  'teachers': [{'full_name': 'Новіков Олексій Валентинович',
+  'teachers': [{'fullName': 'Новіков Олексій Валентинович',
                 'id': 7278549,
-                'short_name': 'Новіков О. В.'}],
+                'shortName': 'Новіков О. В.'}],
   'type': 'Пз',
   'updatedAt': '2023-09-24T03:15:06.251Z'}
 ]
@@ -280,9 +275,9 @@ pprint(schedule_auditorium)
   'subject': {'brief': 'ПарП',
               'id': 1989780,
               'title': 'Паралельне програмування'},
-  'teachers': [{'full_name': 'Кравець Наталя Сергіївна',
+  'teachers': [{'fullName': 'Кравець Наталя Сергіївна',
                 'id': 7063375,
-                'short_name': 'Кравець Н. С.'}],
+                'shortName': 'Кравець Н. С.'}],
   'type': 'Лб',
   'updatedAt': '2023-09-24T08:13:39.429Z'},
 
@@ -297,9 +292,9 @@ pprint(schedule_auditorium)
   'subject': {'brief': 'ПарП',
               'id': 1989780,
               'title': 'Паралельне програмування'},
-  'teachers': [{'full_name': 'Кравець Наталя Сергіївна',
+  'teachers': [{'fullName': 'Кравець Наталя Сергіївна',
                 'id': 7063375,
-                'short_name': 'Кравець Н. С.'}],
+                'shortName': 'Кравець Н. С.'}],
   'type': 'Лб',
   'updatedAt': '2023-09-24T08:13:39.420Z'}
 ] 
