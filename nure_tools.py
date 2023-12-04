@@ -1,10 +1,11 @@
 """Simple pyton library for nure-cist API"""
 
-__version__ = '1.6.1'
+__version__ = '1.7.0'
 
 import requests
 import time
 from typing import Literal
+
 
 
 def convert_time(time_toconvert: str | int, pattern: str) -> int:
@@ -25,7 +26,7 @@ def convert_time(time_toconvert: str | int, pattern: str) -> int:
 
 
 def get_groups() -> list:
-    groups_respond = requests.get('https://nure-dev.pp.ua/api/groups')
+    groups_respond = requests.get('https://api.mindenit.tech/groups')
 
     if groups_respond.status_code == 200:
         respond = []
@@ -38,7 +39,7 @@ def get_groups() -> list:
 
 
 def get_teachers() -> list:
-    teachers_respond = requests.get('https://nure-dev.pp.ua/api/teachers')
+    teachers_respond = requests.get('https://api.mindenit.tech/teachers')
 
     if teachers_respond.status_code == 200:
         respond = []
@@ -51,7 +52,7 @@ def get_teachers() -> list:
 
 
 def get_auditoriums() -> list:
-    auditoriums_respond = requests.get('https://nure-dev.pp.ua/api/auditories')
+    auditoriums_respond = requests.get('https://api.mindenit.tech/auditories')
 
     if auditoriums_respond.status_code == 200:
         respond = []
@@ -76,14 +77,13 @@ def get_schedule(request_type: Literal['group', 'teacher', 'auditory'],
         raise ValueError('Invalid request type')
 
     schedule_respond = requests.get(
-        f'https://nure-dev.pp.ua/api/schedule?type={request_type}&id={request_id}&start_time={start_time}&end_time={end_time}')
+        f'https://api.mindenit.tech/schedule?type={request_type}&id={request_id}&start_time={start_time}&end_time={end_time}')
 
     if schedule_respond.status_code == 200:
         respond = []
         for lesson in schedule_respond.json():
-            lesson["id"] = int(lesson["id"])
-            lesson["start_time"] = int(lesson["start_time"])
-            lesson["end_time"] = int(lesson["end_time"])
+            lesson["startTime"] = int(lesson["startTime"])
+            lesson["endTime"] = int(lesson["endTime"])
             lesson["subject"]["id"] = int(lesson["subject"]["id"])
 
             teachers = []
@@ -121,11 +121,11 @@ def find_teacher(teacher_name: str) -> list:
     result = []
     for teacher in teachers:
         if teacher_name[-1] == '.':
-            if teacher["short_name"].lower() == teacher_name:
+            if teacher["shortName"].lower() == teacher_name:
                 result.append(teacher)
                 return result
         else:
-            if teacher_name in teacher["short_name"].lower():
+            if teacher_name in teacher["shortName"].lower():
                 result.append(teacher)
 
     if len(result) != 0:
